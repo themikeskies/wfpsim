@@ -15,6 +15,7 @@ const (
 	a1Key           = "vesna-a1"
 	a4Key           = "vesna-a4"
 	stellarBonusKey = "vesna-ssw-bonus"
+	a1MaxStacks = 6
 )
 
 func (c *char) a1Init() {
@@ -22,7 +23,7 @@ func (c *char) a1Init() {
 		return
 	}
 
-	c.a1Stacks = NewRingQueue[int](6)
+	c.a1Stacks = NewRingQueue[int](a1MaxStacks)
 	c.Core.Events.Subscribe(event.OnCharacterSwap, func(args ...any) {
 		// do nothing if previous char wasn't vesna
 		prev := args[0].(int)
