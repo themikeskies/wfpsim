@@ -91,7 +91,7 @@ func (c *char) c2Init() {
 		Base:         modifier.NewBase(c2Key, -1),
 		AffectedStat: attributes.ATKP,
 		Amount: func() []float64 {
-			if c.a1StackCount() < c.a1Stacks.Len() {
+			if c.a1StackCount() < a1MaxStacks {
 				return nil
 			}
 			return m
@@ -109,7 +109,7 @@ func (c *char) c2OnSkill() {
 		return
 	}
 
-	for range c.a1Stacks.Len() {
+	for range a1MaxStacks {
 		c.a1AddStacks()
 	}
 }
